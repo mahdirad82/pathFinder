@@ -44,7 +44,7 @@ class BFS:
                     self.queue.put((successor_state, new_path, new_cost))
 
         if len(self.best_path) == 0:
-            print("No path to targets found")
+            print("there is no route")
 
 
 bfs = BFS(initial_state, targets)
