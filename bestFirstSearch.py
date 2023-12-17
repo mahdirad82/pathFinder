@@ -6,7 +6,9 @@ targets = set(targets)
 
 
 def heuristic(state):
-    distances = [abs(state[0] - goal[0]) + abs(state[1] - goal[1]) for goal in targets]
+    distances = [
+        abs(state[0] - target[0]) + abs(state[1] - target[1]) for target in targets
+    ]
     return min(distances)
 
 
@@ -55,6 +57,3 @@ def best_first_search(start, remainingTargets):
         successors.clear()
 
     return []
-
-
-energy = 500
