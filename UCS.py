@@ -8,7 +8,6 @@ class UCS_Algorithm:
         self.initial_state = initial_state
         self.targets = set(targets)
         self.queue = Queue()
-        self.best_path = []
 
     def getCost(self, state):
         return standardMatrix[state[0]][state[1]]
@@ -20,14 +19,13 @@ class UCS_Algorithm:
             current_state, current_path = self.queue.get()
 
             if self.targets <= set(current_path):
-                self.best_path = current_path
-                return self.best_path
+                return current_path
 
             successors = get_successors(current_state)
             successors.sort(key=self.getCost)
 
             for successor_state in successors:
-                if successor_state not in current_path:  # Avoid cycles
+                if successor_state not in current_path:
                     new_path = list(current_path)
                     new_path.append(successor_state)
                     self.queue.put((successor_state, new_path))
