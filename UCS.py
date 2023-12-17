@@ -26,8 +26,6 @@ class UCS_Algorithm:
 
             for successor_state in successors:
                 if successor_state not in current_path:
-                    new_path = list(current_path)
-                    new_path.append(successor_state)
-                    self.queue.put((successor_state, new_path))
+                    self.queue.put((successor_state, current_path + [successor_state]))
 
         return []
